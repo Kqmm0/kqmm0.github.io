@@ -443,111 +443,132 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .featured__footer {
-  text-align: center;
-  margin-top: var(--sp-14);
+  display: flex;
+  justify-content: center;   /* align with the centered card below */
+  margin-top: var(--sp-10);
 }
 
 /* =====================
-   FEATURED SHOWCASE — single dominant project card
+   FEATURED SHOWCASE — single flagship project card
+   Uses flexbox (not grid) so the card can be constrained
+   by its own max-width and centered perfectly relative to
+   the section heading and page edges.
    ===================== */
 
 .projects-grid--showcase {
-  /* Override the auto-fill grid to a single centred column */
-  grid-template-columns: 1fr;
-  max-width: 700px;
-  margin-inline: auto;
-  gap: 0; /* only one card, gap irrelevant */
+  display: flex;             /* override inherited display:grid */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
 }
 
-/* Elevate the card visually */
+/* The card: premium constrained width, centered via parent flex */
 .projects-grid--showcase .card {
+  width: 100%;
+  max-width: 480px;          /* flagship card width — intentional, not narrow */
   border-radius: var(--r-2xl);
+  /* Three-layer shadow: outer depth + mid lift + ambient violet glow */
   box-shadow:
-    0 0 0 1px rgba(124, 110, 245, 0.18),
-    0 24px 64px rgba(0, 0, 0, 0.65),
-    0 8px 24px rgba(0, 0, 0, 0.4),
-    0 0 60px rgba(124, 110, 245, 0.09);
+    0 0 0 1px rgba(124, 110, 245, 0.20),
+    0 28px 72px rgba(0, 0, 0, 0.68),
+    0 10px 28px rgba(0, 0, 0, 0.42),
+    0 0 64px rgba(124, 110, 245, 0.10);
 }
 
-/* Slightly more cinematic image */
+/* Standard 16/9 thumbnail — clean at 480px (270px height) */
 .projects-grid--showcase .card__thumb {
-  aspect-ratio: 16 / 8;
+  aspect-ratio: 16 / 9;
 }
 
-/* More generous body padding */
+/* Generous, calibrated body padding */
 .projects-grid--showcase .card__body {
-  padding: var(--sp-6) var(--sp-8) var(--sp-5);
-  gap: var(--sp-4);
+  padding: var(--sp-7) var(--sp-7) var(--sp-5);
+  gap: var(--sp-4);          /* title → desc → stack each breathe evenly */
 }
 
-/* Larger title */
+/* Elevated title — one size up from base card */
 .projects-grid--showcase .card__title {
   font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
 }
 
-/* Slightly larger description */
+/* More readable description at wider line measure */
 .projects-grid--showcase .card__desc {
   font-size: var(--text-base);
+  line-height: var(--leading-loose);
 }
 
-/* More spacious footer */
+/* Stack tags: slightly more space */
+.projects-grid--showcase .card__stack {
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+
+/* Footer: wide padding, comfortable button gap */
 .projects-grid--showcase .card__footer {
-  padding: var(--sp-5) var(--sp-8);
+  padding: var(--sp-5) var(--sp-7);
   gap: var(--sp-3);
 }
 
-/* Bigger footer buttons */
+/* Buttons: sized to feel premium, not small */
 .projects-grid--showcase .card__footer .btn {
+  padding: 11px 20px;
   font-size: var(--text-sm);
-  padding: 10px 20px;
+  font-weight: var(--weight-semibold);
 }
 
-/* On mobile: restore normal radius and padding */
-@media (max-width: 480px) {
-  .projects-grid--showcase {
-    max-width: 100%;
-  }
+/* Section header: match card max-width so title and card
+   feel optically anchored to the same center column     */
+.featured .section-header {
+  max-width: 480px;
+}
 
+/* Mobile — full width, tighter radius and padding */
+@media (max-width: 480px) {
   .projects-grid--showcase .card {
+    max-width: 100%;
     border-radius: var(--r-xl);
   }
 
-  .projects-grid--showcase .card__body,
+  .projects-grid--showcase .card__body {
+    padding: var(--sp-5) var(--sp-5) var(--sp-4);
+  }
+
   .projects-grid--showcase .card__footer {
-    padding-inline: var(--sp-5);
+    padding: var(--sp-4) var(--sp-5);
   }
 }
 
 /* =====================
-   PAGE SHOWCASE — projects.html single-card layout
-   Narrower than the hero featured (700px) — feels
-   intentional and editorial rather than a grid
-   that lost its siblings.
+   PAGE SHOWCASE — projects.html
+   Inherits flex centering from .projects-grid--showcase.
+   Same card width (480px) for visual consistency with
+   the homepage featured section.
+   Slightly stronger shadow for the dedicated case page.
    ===================== */
 
 .projects-grid--page-showcase {
-  max-width: 520px;   /* tighter: more gallery / case-study feeling */
   padding-top: var(--sp-4);
 }
 
-/* Slightly stronger card presence on the dedicated page */
+/* Stronger glow on dedicated projects page */
 .projects-grid--page-showcase .card {
   box-shadow:
-    0 0 0 1px rgba(124, 110, 245, 0.22),
-    0 32px 80px rgba(0, 0, 0, 0.7),
-    0 12px 32px rgba(0, 0, 0, 0.45),
-    0 0 80px rgba(124, 110, 245, 0.12);
+    0 0 0 1px rgba(124, 110, 245, 0.25),
+    0 32px 80px rgba(0, 0, 0, 0.72),
+    0 12px 32px rgba(0, 0, 0, 0.46),
+    0 0 80px rgba(124, 110, 245, 0.14);
 }
 
-/* Give the projects section itself breathing room when it holds one card */
+/* Vertical breathing room for single-card dedicated page */
 .projects-section:has(.projects-grid--page-showcase) {
   padding-block: var(--sp-12) var(--sp-20);
 }
 
 @media (max-width: 480px) {
   .projects-grid--page-showcase {
-    max-width: 100%;
     padding-top: 0;
   }
 }
