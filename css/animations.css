@@ -1,0 +1,134 @@
+/* ============================================
+   PREMIUM ATMOSPHERE, MOTION & INTERACTION
+   Loaded last — overrides where needed.
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   Film grain — fixed cinematic texture overlay
+   ───────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9001;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─────────────────────────────────────────────
+   Edge vignette — draws the eye to the center
+   ───────────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 48%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+}
+
+/* ─────────────────────────────────────────────
+   Page transition overlay
+   Injected by js/transitions.js into <body>.
+   Starts opaque, fades to clear on load.
+   On navigation: fades back to opaque, then page changes.
+   ───────────────────────────────────────────── */
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+/* Faded-out state (page is visible) */
+.page-overlay.is-visible {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   Featured card — entrance reveal
+   The card has class="card reveal" from render-projects.js.
+   The existing reveal system adds .visible on intersection.
+   We intercept at higher specificity for a richer motion.
+   ───────────────────────────────────────────── */
+.projects-grid--showcase .card {
+  opacity: 0;
+  transform: translateY(36px) scale(0.982);
+  transition:
+    opacity  0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--t-spring);
+  will-change: opacity, transform;
+}
+
+/* Revealed state — applied by utils.initReveal() */
+.projects-grid--showcase .card.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hover only after revealed — beats .card:hover in components.css */
+.projects-grid--showcase .card.visible:hover {
+  transform: translateY(-8px) scale(1.008) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Card spotlight effect
+   A radial light that tracks the mouse cursor
+   inside the featured project card.
+   Injected as <div class="card-spotlight"> by effects.js.
+   CSS variables --sx / --sy are set from JS.
+   ───────────────────────────────────────────── */
+.card-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    280px circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(124, 110, 245, 0.09),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Reveal spotlight when hovering the card */
+.card:hover .card-spotlight {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────
+   Magnetic buttons
+   Class added by effects.js to .btn--primary.btn--lg
+   and .btn--tg.btn--lg.
+   Overrides transition so translate feels springy.
+   ───────────────────────────────────────────── */
+.btn--magnetic {
+  transition:
+    transform        280ms cubic-bezier(0.22, 1, 0.36, 1),
+    background       var(--t-base),
+    box-shadow       var(--t-base),
+    border-color     var(--t-fast),
+    color            var(--t-fast) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Section reveal — stagger for about stats card
+   ───────────────────────────────────────────── */
+.about__visual.visible .about__stat:nth-child(1) { transition-delay: 0.05s; }
+.about__visual.visible .about__stat:nth-child(2) { transition-delay: 0.12s; }
+.about__visual.visible .about__stat:nth-child(3) { transition-delay: 0.19s; }
+.about__visual.visible .about__stat:nth-child(4) { transition-delay: 0.26s; }
