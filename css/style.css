@@ -482,11 +482,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* Generous, calibrated body padding */
 .projects-grid--showcase .card__body {
-  padding: var(--sp-7) var(--sp-7) var(--sp-5);
-  gap: var(--sp-4);          /* title → desc → stack each breathe evenly */
+  /* 36px sides — text column is 408px wide (480 - 72).
+     Feels intentionally framed, not cramped to edges.  */
+  padding: var(--sp-7) 2.25rem var(--sp-6);
+  gap: var(--sp-5);          /* 20px between every child: more editorial air */
 }
 
-/* Elevated title — one size up from base card */
+/* Elevated title */
 .projects-grid--showcase .card__title {
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
@@ -494,21 +496,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: var(--leading-snug);
 }
 
-/* More readable description at wider line measure */
+/* Description: restrained line length, comfortable leading */
 .projects-grid--showcase .card__desc {
   font-size: var(--text-base);
-  line-height: var(--leading-loose);
+  line-height: 1.78;         /* between snug and loose — reads easily */
+  /* Extra right-side buffer so lines don't press the edge visually */
+  padding-right: var(--sp-3);
 }
 
-/* Stack tags: slightly more space */
+/* Stack tags: connected to desc but breathes before footer */
 .projects-grid--showcase .card__stack {
   gap: var(--sp-2);
-  margin-top: var(--sp-2);
+  margin-top: calc(var(--sp-5) - var(--sp-2)); /* net 12px above tags */
 }
 
-/* Footer: wide padding, comfortable button gap */
+/* Footer: horizontal padding matches body exactly */
 .projects-grid--showcase .card__footer {
-  padding: var(--sp-5) var(--sp-7);
+  padding: var(--sp-5) 2.25rem;
   gap: var(--sp-3);
 }
 
@@ -533,11 +537,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
 
   .projects-grid--showcase .card__body {
-    padding: var(--sp-5) var(--sp-5) var(--sp-4);
+    padding: var(--sp-5) var(--sp-6) var(--sp-4); /* 24px sides on mobile */
+    gap: var(--sp-4);
+  }
+
+  .projects-grid--showcase .card__desc {
+    padding-right: 0; /* remove extra buffer — mobile width handles it */
   }
 
   .projects-grid--showcase .card__footer {
-    padding: var(--sp-4) var(--sp-5);
+    padding: var(--sp-4) var(--sp-6); /* match body */
   }
 }
 
