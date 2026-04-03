@@ -7,15 +7,12 @@
 
   <title>Kqmm0 Portfolio — Веб-разработчик</title>
 
-  <!-- Favicon placeholder -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%237c6ef5'/><text y='.9em' x='50%' text-anchor='middle' font-size='55' fill='white'>⬡</text></svg>">
 
-  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/style.css">
@@ -25,35 +22,30 @@
 <body>
 
   <!-- ============================================
-       HEADER
+       HEADER — minimal premium navigation
        ============================================ -->
   <header class="header" role="banner">
     <div class="header__inner">
 
-      <!-- Logo -->
       <a href="index.html" class="logo" aria-label="На главную">
         <span class="logo__dot"></span>
         <span>Kqmm0 <strong>Portfolio</strong></span>
       </a>
 
-      <!-- Desktop navigation -->
       <nav class="nav" role="navigation" aria-label="Основная навигация">
         <ul class="nav__links">
-          <li><a href="projects.html" class="nav__link" data-i18n="nav.projects">Проекты</a></li>
+          <li><a href="#work" class="nav__link" data-i18n="nav.projects">Проекты</a></li>
           <li><a href="#about" class="nav__link" data-i18n="nav.about">Обо мне</a></li>
           <li><a href="#contact" class="nav__link" data-i18n="nav.contact">Контакт</a></li>
         </ul>
       </nav>
 
-      <!-- Header actions -->
       <div class="header__actions">
-        <!-- Language switcher -->
         <div class="lang-switcher" role="group" aria-label="Язык / Language">
           <button class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
           <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
         </div>
 
-        <!-- CTA button -->
         <a href="https://t.me/Wrotich" target="_blank" rel="noopener"
            class="btn btn--tg" aria-label="Написать в Telegram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -62,7 +54,6 @@
           <span data-i18n="nav.cta">Написать в Telegram</span>
         </a>
 
-        <!-- Burger -->
         <button class="burger" aria-label="Открыть меню" aria-expanded="false">
           <span class="burger__line"></span>
           <span class="burger__line"></span>
@@ -72,9 +63,9 @@
     </div>
   </header>
 
-  <!-- Mobile navigation overlay -->
+  <!-- Mobile navigation -->
   <nav class="mobile-nav" aria-label="Мобильная навигация" aria-hidden="true">
-    <a href="projects.html" class="mobile-nav__link" data-i18n="nav.projects">Проекты</a>
+    <a href="#work" class="mobile-nav__link" data-i18n="nav.projects">Проекты</a>
     <a href="#about" class="mobile-nav__link" data-i18n="nav.about">Обо мне</a>
     <a href="#contact" class="mobile-nav__link" data-i18n="nav.contact">Контакт</a>
     <a href="https://t.me/Wrotich" target="_blank" rel="noopener"
@@ -85,38 +76,34 @@
   <main>
 
     <!-- ============================================
-         HERO SECTION
+         HERO — cinematic poster-scale intro
          ============================================ -->
     <section class="hero" id="hero" aria-labelledby="hero-title">
-      <!-- Ambient glow orbs -->
+      <!-- Atmospheric layers -->
       <div class="hero__glow-1" aria-hidden="true"></div>
       <div class="hero__glow-2" aria-hidden="true"></div>
 
       <div class="container hero__inner">
 
-        <!-- Badge -->
         <p class="hero__badge">
           <span class="hero__badge-dot" aria-hidden="true"></span>
           <span data-i18n="hero.badge">Веб-разработчик · Frontend</span>
         </p>
 
-        <!-- Title — 'работают' wrapped in em for gradient -->
         <h1 class="hero__title" id="hero-title" data-i18n="hero.title">
           Создаю сайты,<br>которые <em>работают</em><br>на ваш бизнес
         </h1>
 
-        <!-- Subtitle -->
         <p class="hero__sub" data-i18n="hero.sub">
           Лендинги, многостраничные сайты и бизнес-страницы для ресторанов, кафе и компаний.
         </p>
 
-        <!-- CTAs -->
         <div class="hero__actions">
-          <a href="projects.html" class="btn btn--primary btn--lg" data-i18n="hero.cta.projects">
+          <a href="#work" class="btn btn--primary btn--lg" data-i18n="hero.cta.projects">
             Смотреть проекты
           </a>
           <a href="https://t.me/Wrotich" target="_blank" rel="noopener"
-             class="btn btn--tg btn--lg" data-i18n="hero.cta.tg">
+             class="btn btn--ghost btn--lg" data-i18n="hero.cta.tg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.51c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.09 14.408 4.117 13.5c-.643-.204-.657-.643.136-.953l10.91-4.206c.537-.196 1.006.131.829.907z"/>
             </svg>
@@ -124,26 +111,24 @@
           </a>
         </div>
 
-        <!-- Scroll hint -->
-        <div class="hero__scroll" aria-hidden="true">
-          <span class="hero__scroll-line"></span>
-          <span data-i18n="hero.scroll">Листайте вниз</span>
-        </div>
+      </div>
 
+      <div class="hero__scroll" aria-hidden="true">
+        <span data-i18n="hero.scroll">Листайте вниз</span>
+        <span class="hero__scroll-line"></span>
       </div>
     </section>
 
 
     <!-- ============================================
-         ABOUT SECTION
+         ABOUT SECTION — editorial positioning
          ============================================ -->
     <section class="about section" id="about" aria-labelledby="about-title">
       <div class="container">
         <div class="about__grid">
 
-          <!-- Text column -->
-          <div>
-            <p class="about__label reveal" data-i18n="about.label">Обо мне</p>
+          <div class="about__text-col">
+            <p class="ui-label reveal" data-i18n="about.label">Обо мне</p>
             <h2 class="about__title reveal" id="about-title" data-i18n="about.title">
               Начинающий разработчик<br>с серьёзным подходом
             </h2>
@@ -164,7 +149,6 @@
             </div>
           </div>
 
-          <!-- Visual column -->
           <div class="about__visual reveal reveal-delay-2">
             <div class="about__card">
               <ul class="about__stat-list">
@@ -194,28 +178,45 @@
 
 
     <!-- ============================================
-         FEATURED PROJECTS
+         SELECTED CASE STUDY — flagship showcase
+         Full-width split layout: info + visual
          ============================================ -->
-    <section class="featured" id="projects" aria-labelledby="featured-title">
+    <section class="showcase" id="work" aria-labelledby="showcase-title">
       <div class="container">
 
-        <div class="section-header reveal">
-          <span class="section-label" data-i18n="featured.label">Портфолио</span>
-          <h2 class="section-title" id="featured-title" data-i18n="featured.title">Избранные проекты</h2>
-          <p class="section-sub" data-i18n="featured.sub">
-            Реальные кейсы — от лендингов до многостраничных сайтов.
-          </p>
+        <p class="ui-label reveal" data-i18n="showcase.label">Избранный кейс</p>
+
+        <div class="showcase__grid">
+
+          <div class="showcase__info reveal">
+            <h2 class="showcase__title" id="showcase-title" data-i18n="showcase.title">Kianu Restaurant</h2>
+            <div class="showcase__tags">
+              <span data-i18n="showcase.tag1">Веб-дизайн</span>
+              <span data-i18n="showcase.tag2">Фронтенд</span>
+              <span data-i18n="showcase.tag3">Адаптивный</span>
+            </div>
+            <p class="showcase__desc" data-i18n="showcase.desc">
+              Современный сайт для ресторана с онлайн-меню, галереей блюд и формой бронирования. Тёмный атмосферный дизайн, плавные переходы и адаптивная вёрстка.
+            </p>
+            <div class="showcase__links">
+              <a href="https://kqmm0.github.io/kianu-site/" target="_blank" rel="noopener noreferrer" data-i18n="showcase.live">Live Demo ↗</a>
+              <a href="https://github.com/Kqmm0/kianu-site" target="_blank" rel="noopener noreferrer" data-i18n="showcase.github">GitHub ↗</a>
+              <a href="projects/kianu.html" data-i18n="showcase.details">Подробнее</a>
+            </div>
+          </div>
+
+          <div class="showcase__visual reveal" style="transition-delay: 0.15s;">
+            <div class="showcase__img-wrap">
+              <div class="placeholder-img placeholder-img--restaurant" aria-hidden="true">
+                <span>🍽️</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Cards rendered by render-projects.js -->
-        <div class="projects-grid projects-grid--showcase" data-projects-grid="featured" aria-live="polite">
-          <!-- JS renders here -->
-        </div>
-
-        <div class="featured__footer reveal">
-          <a href="projects.html" class="btn btn--ghost btn--lg" data-i18n="featured.all">
-            Все проекты →
-          </a>
+        <div class="showcase__all reveal">
+          <a href="projects.html" class="btn btn--ghost" data-i18n="featured.all">Все проекты →</a>
         </div>
 
       </div>
@@ -223,51 +224,35 @@
 
 
     <!-- ============================================
-         SERVICES SECTION
+         CAPABILITIES — numbered editorial rows
          ============================================ -->
-    <section class="services section" id="services" aria-labelledby="services-title">
+    <section class="capabilities section" id="services" aria-labelledby="cap-title">
       <div class="container">
 
-        <div class="section-header reveal">
-          <span class="section-label" data-i18n="services.label">Услуги</span>
-          <h2 class="section-title" id="services-title" data-i18n="services.title">Что я создаю</h2>
-        </div>
+        <p class="ui-label reveal" data-i18n="services.label">Услуги</p>
+        <h2 class="capabilities__title reveal" id="cap-title" data-i18n="services.title">Что я создаю</h2>
 
-        <div class="services-grid">
-
-          <div class="service-card reveal">
-            <div class="service-card__icon" aria-hidden="true">🚀</div>
-            <h3 class="service-card__title" data-i18n="service.landing.title">Лендинг-страницы</h3>
-            <p class="service-card__desc" data-i18n="service.landing.desc">
-              Продающие одностраничники с сильным дизайном и CTA.
-            </p>
+        <div class="capabilities__list">
+          <div class="cap-row reveal">
+            <span class="cap-row__num">01</span>
+            <h3 class="cap-row__title" data-i18n="service.landing.title">Лендинг-страницы</h3>
+            <p class="cap-row__desc" data-i18n="service.landing.desc">Продающие одностраничники с сильным дизайном и CTA.</p>
           </div>
-
-          <div class="service-card reveal reveal-delay-1">
-            <div class="service-card__icon" aria-hidden="true">🏢</div>
-            <h3 class="service-card__title" data-i18n="service.business.title">Бизнес-сайты</h3>
-            <p class="service-card__desc" data-i18n="service.business.desc">
-              Профессиональные сайты для компаний и брендов.
-            </p>
+          <div class="cap-row reveal">
+            <span class="cap-row__num">02</span>
+            <h3 class="cap-row__title" data-i18n="service.business.title">Бизнес-сайты</h3>
+            <p class="cap-row__desc" data-i18n="service.business.desc">Профессиональные сайты для компаний и брендов.</p>
           </div>
-
-          <div class="service-card reveal reveal-delay-2">
-            <div class="service-card__icon" aria-hidden="true">🍽️</div>
-            <h3 class="service-card__title" data-i18n="service.restaurant.title">Сайты для ресторанов</h3>
-            <p class="service-card__desc" data-i18n="service.restaurant.desc">
-              Меню, атмосфера и бронирование — всё в одном.
-            </p>
+          <div class="cap-row reveal">
+            <span class="cap-row__num">03</span>
+            <h3 class="cap-row__title" data-i18n="service.restaurant.title">Сайты для ресторанов</h3>
+            <p class="cap-row__desc" data-i18n="service.restaurant.desc">Меню, атмосфера и бронирование — всё в одном.</p>
           </div>
-
-          <div class="service-card reveal reveal-delay-3">
-            <div class="service-card__icon" aria-hidden="true">📄</div>
-            <h3 class="service-card__title" data-i18n="service.multipage.title">Многостраничные сайты</h3>
-            <p class="service-card__desc" data-i18n="service.multipage.desc">
-              Полноценный сайт с навигацией и несколькими разделами.
-            </p>
+          <div class="cap-row reveal">
+            <span class="cap-row__num">04</span>
+            <h3 class="cap-row__title" data-i18n="service.multipage.title">Многостраничные сайты</h3>
+            <p class="cap-row__desc" data-i18n="service.multipage.desc">Полноценный сайт с навигацией и несколькими разделами.</p>
           </div>
-
-
         </div>
 
       </div>
@@ -275,25 +260,25 @@
 
 
     <!-- ============================================
-         CONTACT SECTION
+         CONTACT CTA — dramatic cinematic closing
          ============================================ -->
-    <section class="contact" id="contact" aria-labelledby="contact-title">
+    <section class="cta-section" id="contact" aria-labelledby="cta-title">
       <div class="container">
-        <div class="contact__inner">
+        <div class="cta-section__inner">
 
-          <span class="section-label reveal" data-i18n="contact.label">Контакт</span>
+          <p class="ui-label reveal" data-i18n="contact.label">Контакт</p>
 
-          <h2 class="contact__title reveal" id="contact-title" data-i18n="contact.title">
+          <h2 class="cta-section__title reveal" id="cta-title" data-i18n="contact.title">
             Готов к новым<br>проектам
           </h2>
 
-          <p class="contact__sub reveal reveal-delay-1" data-i18n="contact.sub">
+          <p class="cta-section__sub reveal reveal-delay-1" data-i18n="contact.sub">
             Напишите мне в Telegram — отвечу быстро, обсудим ваш проект.
           </p>
 
-          <div class="contact__links reveal reveal-delay-2">
+          <div class="cta-section__links reveal reveal-delay-2">
             <a href="https://t.me/Wrotich" target="_blank" rel="noopener"
-               class="btn btn--tg btn--lg" data-i18n="contact.tg">
+               class="btn btn--primary btn--xl" data-i18n="contact.tg">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.51c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.09 14.408 4.117 13.5c-.643-.204-.657-.643.136-.953l10.91-4.206c.537-.196 1.006.131.829.907z"/>
               </svg>
@@ -301,7 +286,7 @@
             </a>
 
             <a href="https://github.com/Kqmm0" target="_blank" rel="noopener"
-               class="social-link social-link--gh btn--lg" data-i18n="contact.gh">
+               class="social-link social-link--gh" data-i18n="contact.gh">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
               </svg>
@@ -317,7 +302,7 @@
 
 
   <!-- ============================================
-       FOOTER
+       FOOTER — minimal
        ============================================ -->
   <footer class="footer" role="contentinfo">
     <div class="container">
@@ -348,13 +333,8 @@
     </div>
   </footer>
 
-  <!-- Scroll-to-top button -->
   <button class="scroll-top" aria-label="Вернуться наверх" title="Вернуться наверх">↑</button>
 
-
-  <!-- ============================================
-       SCRIPTS — order matters
-       ============================================ -->
   <script src="data/projects-data.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/i18n.js"></script>
