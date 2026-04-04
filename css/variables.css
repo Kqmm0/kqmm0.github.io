@@ -1,129 +1,77 @@
 /* ============================================
-   DESIGN SYSTEM — CSS CUSTOM PROPERTIES
-   Premium cinematic dark portfolio
+   DESIGN TOKENS — 2025 AWWWARDS
+   Black + Chartreuse (#CDFF50) + Warm Cream
+   Space Grotesk (display) + Inter (body)
    ============================================ */
 
 :root {
-  /* --- Backgrounds --- */
-  --bg-primary:    #09090e;
-  --bg-secondary:  #0e0e16;
-  --bg-card:       #12121a;
-  --bg-card-hover: #17172280;
-  --bg-elevated:   #1a1a26;
+  /* ── Backgrounds ── */
+  --bg:            #0a0a0a;
+  --bg-alt:        #111111;
+  --bg-card:       #141414;
+  --bg-elevated:   #1a1a1a;
+  --bg-glass:      rgba(20, 20, 20, 0.75);
 
-  /* --- Borders --- */
-  --border:        #1a1a26;
-  --border-soft:   #151520;
-  --border-hover:  #28283c;
-  --border-accent: rgba(124, 110, 245, 0.3);
-  --border-accent-strong: rgba(124, 110, 245, 0.55);
+  /* ── Accent — Chartreuse ── */
+  --accent:        #CDFF50;
+  --accent-hover:  #d8ff70;
+  --accent-dim:    rgba(205, 255, 80, 0.10);
+  --accent-glow:   rgba(205, 255, 80, 0.20);
+  --accent-text:   #0a0a0a;
 
-  /* --- Accent — violet --- */
-  --accent:        #7c6ef5;
-  --accent-hover:  #9585f7;
-  --accent-bright: #a89ff9;
-  --accent-dim:    #5e52c0;
-  --accent-soft:   rgba(124, 110, 245, 0.10);
-  --accent-mid:    rgba(124, 110, 245, 0.18);
-  --accent-glow:   rgba(124, 110, 245, 0.28);
-  --accent-rgb:    124, 110, 245;
+  /* ── Text — warm spectrum ── */
+  --text-1:        #F5F0E8;
+  --text-2:        #A09A90;
+  --text-3:        #5A5650;
 
-  /* --- Gradients --- */
-  --gradient-accent:  linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
-  --gradient-card:    linear-gradient(160deg, rgba(124,110,245,0.06) 0%, transparent 60%);
-  --gradient-hero:    radial-gradient(ellipse 80% 60% at 60% 0%, rgba(124,110,245,0.12) 0%, transparent 70%);
+  /* ── Borders ── */
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-hover:  rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(205, 255, 80, 0.20);
 
-  /* --- Text --- */
-  --text-primary:   #eeeef6;
-  --text-secondary: #7e7e9e;
-  --text-muted:     #46465a;
-  --text-inverse:   #09090e;
+  /* ── Shadows ── */
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md:     0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg:     0 16px 48px rgba(0,0,0,0.5);
+  --shadow-xl:     0 24px 64px rgba(0,0,0,0.6);
 
-  /* --- Typography --- */
-  --font:      'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* ── Fonts ── */
+  --font-display:  'Space Grotesk', system-ui, sans-serif;
+  --font-body:     'Inter', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', 'SF Mono', monospace;
 
-  /* Extended scale for cinematic headings */
-  --text-xs:   0.72rem;    /* 11.5px */
-  --text-sm:   0.875rem;   /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg:   1.125rem;   /* 18px */
-  --text-xl:   1.25rem;    /* 20px */
-  --text-2xl:  1.5rem;     /* 24px */
-  --text-3xl:  2rem;       /* 32px */
-  --text-4xl:  2.75rem;    /* 44px */
-  --text-5xl:  3.75rem;    /* 60px */
-  --text-6xl:  5rem;       /* 80px */
-  --text-7xl:  6rem;       /* 96px — hero scale */
-  --text-8xl:  8rem;       /* 128px — massive display */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2rem;
+  --text-4xl:  2.5rem;
+  --text-5xl:  3.5rem;
+  --text-hero: clamp(3rem, 9vw, 7.5rem);
+  --text-display: clamp(2rem, 5vw, 4.5rem);
 
-  --weight-light:    300;
-  --weight-normal:   400;
-  --weight-medium:   500;
-  --weight-semibold: 600;
-  --weight-bold:     700;
-  --weight-black:    800;
+  /* ── Spacing ── */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem;
+  --sp-4: 1rem;     --sp-5: 1.25rem; --sp-6: 1.5rem;
+  --sp-8: 2rem;     --sp-10: 2.5rem; --sp-12: 3rem;
+  --sp-16: 4rem;    --sp-20: 5rem;   --sp-24: 6rem;
 
-  --leading-none:   1.0;
-  --leading-tight:  1.1;
-  --leading-snug:   1.3;
-  --leading-normal: 1.6;
-  --leading-loose:  1.8;
+  --section-pad: clamp(5rem, 12vw, 10rem);
+  --container-max: 1280px;
+  --container-pad: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 72px;
 
-  --tracking-tighter: -0.06em;
-  --tracking-tight:   -0.04em;
-  --tracking-snug:    -0.025em;
-  --tracking-base:    -0.01em;
-  --tracking-wide:     0.06em;
-  --tracking-wider:    0.12em;
+  /* ── Radii ── */
+  --r-sm: 6px;   --r-md: 10px;  --r-lg: 14px;
+  --r-xl: 18px;  --r-2xl: 24px; --r-full: 9999px;
 
-  /* --- Spacing scale --- */
-  --sp-1:  0.25rem;
-  --sp-2:  0.5rem;
-  --sp-3:  0.75rem;
-  --sp-4:  1rem;
-  --sp-5:  1.25rem;
-  --sp-6:  1.5rem;
-  --sp-8:  2rem;
-  --sp-10: 2.5rem;
-  --sp-12: 3rem;
-  --sp-16: 4rem;
-  --sp-20: 5rem;
-  --sp-24: 6rem;
-  --sp-32: 8rem;
-  --sp-40: 10rem;
-  --sp-48: 12rem;
-
-  /* --- Layout --- */
-  --container-max: 1200px;
-  --container-pad: clamp(1.5rem, 5vw, 3rem);
-  --header-h:      72px;
-
-  /* --- Border radius --- */
-  --r-xs:   4px;
-  --r-sm:   6px;
-  --r-md:   10px;
-  --r-lg:   16px;
-  --r-xl:   22px;
-  --r-2xl:  30px;
-  --r-full: 9999px;
-
-  /* --- Shadows --- */
-  --shadow-xs:     0 1px 3px rgba(0,0,0,0.4);
-  --shadow-sm:     0 2px 8px rgba(0,0,0,0.45);
-  --shadow-md:     0 6px 24px rgba(0,0,0,0.55);
-  --shadow-lg:     0 16px 48px rgba(0,0,0,0.65);
-  --shadow-xl:     0 24px 64px rgba(0,0,0,0.7);
-  --shadow-card:   0 8px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
-  --shadow-accent: 0 0 48px rgba(124,110,245,0.2), 0 8px 32px rgba(124,110,245,0.12);
-
-  /* --- Transitions --- */
-  --ease:        cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
-  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
-  --t-fast:      140ms ease;
-  --t-base:      240ms ease;
-  --t-slow:      380ms ease;
-  --t-spring:    450ms var(--ease);
-  --t-spring-fast: 280ms var(--ease);
+  /* ── Motion ── */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-fast: 150ms;
+  --t-base: 300ms;
+  --t-slow: 500ms;
+  --t-reveal: 0.8s;
 }

@@ -1,5 +1,5 @@
 /* ============================================
-   UTILITY FUNCTIONS
+   UTILITY FUNCTIONS — AWWWARDS EDITION
    ============================================ */
 
 /**
@@ -15,14 +15,14 @@ function initReveal() {
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
   );
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
 }
 
 /**
- * Header scroll behavior — add glass bg on scroll
+ * Header scroll behavior — frosted glass on scroll
  */
 function initHeaderScroll() {
   const header = document.querySelector('.header');
@@ -33,7 +33,7 @@ function initHeaderScroll() {
   };
 
   window.addEventListener('scroll', toggle, { passive: true });
-  toggle(); // run once on load
+  toggle();
 }
 
 /**
@@ -68,7 +68,6 @@ function initMobileNav() {
 
   burger.addEventListener('click', toggle);
 
-  // Close on link click
   mobileNav.querySelectorAll('.mobile-nav__link').forEach(link => {
     link.addEventListener('click', () => {
       burger.classList.remove('open');
@@ -77,7 +76,6 @@ function initMobileNav() {
     });
   });
 
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
       burger.classList.remove('open');
@@ -96,9 +94,8 @@ function initActiveNav() {
     const href = link.getAttribute('href');
     if (!href) return;
 
-    // Home page
     if (href === '/' || href === '/index.html' || href === '../index.html') {
-      link.classList.toggle('active', path === '/' || path.endsWith('/index.html') || path.endsWith('/ПОРТФОЛИО/'));
+      link.classList.toggle('active', path === '/' || path.endsWith('/index.html'));
     } else if (href.includes('projects.html')) {
       link.classList.toggle('active', path.includes('projects'));
     }
@@ -106,7 +103,7 @@ function initActiveNav() {
 }
 
 /**
- * Simple smooth scroll for anchor links
+ * Smooth scroll for anchor links
  */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
