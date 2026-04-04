@@ -289,10 +289,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================
-   ABOUT
+   ABOUT — large statement + bio details
    ============================================ */
 
 .about {
+  padding-block: var(--section-pad);
   background: var(--bg-alt);
   position: relative;
 }
@@ -304,109 +305,115 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
 }
 
-.about__grid {
+.about__inner {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: var(--sp-20);
-  align-items: center;
+  align-items: start;
 }
 
-.about__label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: var(--sp-5);
+.about__statement {
   display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-.about__label::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.4;
+  flex-direction: column;
 }
 
-.about__title {
+.about__big {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl));
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
   font-weight: 500;
+  color: var(--text-1);
+  line-height: 1.5;
   letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: var(--sp-6);
+}
+
+.about__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
 }
 
 .about__text {
   color: var(--text-2);
   line-height: 1.75;
-  margin-bottom: var(--sp-4);
 }
 
-.about__skills {
+.about__details {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: var(--sp-6);
+  flex-direction: column;
+  gap: var(--sp-4);
 }
 
-.about__visual {
+.about__detail {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: border-color var(--t-fast) ease;
+}
+
+.about__detail:hover {
+  border-color: var(--border-hover);
+}
+
+.about__detail-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about__detail-value {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.about__detail-value--green {
+  color: #4ade80;
 }
 
 /* ============================================
-   FEATURED PROJECTS — Editorial
+   WORK — numbered project list
    ============================================ */
 
-.featured {
+.work {
   padding-block: var(--section-pad);
 }
 
-.section-header {
-  margin-bottom: var(--sp-16);
-}
-
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: var(--sp-4);
-}
-.section-label::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.4;
-}
-
-.section-title {
+.work__heading {
   font-family: var(--font-display);
   font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-12);
 }
 
-.section-sub {
-  color: var(--text-2);
-  font-size: var(--text-lg);
-  line-height: 1.7;
+.work__list {
+  display: flex;
+  flex-direction: column;
 }
 
+.work__all {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: var(--sp-12);
+  transition: color var(--t-fast) ease;
+}
+.work__all:hover {
+  color: var(--accent-hover);
+}
+
+/* Keep old grid/showcase for projects.html */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -424,10 +431,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================
-   SERVICES — Numbered rows
+   SERVICES — numbered grid
    ============================================ */
 
 .services {
+  padding-block: var(--section-pad);
   background: var(--bg-alt);
   position: relative;
 }
@@ -439,8 +447,58 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
 }
 
-.services-list {
-  margin-top: var(--sp-12);
+.services__heading {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: var(--sp-12);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+}
+
+.services__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-8) var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--bg-card);
+  transition: border-color var(--t-base) ease, background var(--t-base) ease;
+}
+
+.services__item:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-elevated);
+}
+
+.services__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.services__item h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.services__item p {
+  font-size: var(--text-sm);
+  color: var(--text-2);
+  line-height: 1.7;
 }
 
 /* ============================================
@@ -482,15 +540,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: var(--sp-5);
-  margin-top: var(--sp-3);
-}
-
-.contact__title .text-accent {
-  color: var(--accent-text);
-  background: var(--accent);
-  padding: 0 0.12em;
-  border-radius: 4px;
-  display: inline-block;
 }
 
 .contact__sub {
@@ -500,7 +549,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.7;
 }
 
-.contact__links {
+.contact__actions {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -514,7 +563,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .footer {
   border-top: 1px solid var(--border);
-  padding-block: var(--sp-8);
+  padding-block: var(--sp-12);
   background: var(--bg);
 }
 .footer__inner {

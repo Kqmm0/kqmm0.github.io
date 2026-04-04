@@ -32,51 +32,6 @@ body::after {
   box-shadow: 0 0 0 1px var(--border-accent), 0 0 40px rgba(205,255,80,0.04);
 }
 
-/* ── Magnetic buttons spring ── */
-.btn--magnetic {
-  transition:
-    transform var(--t-slow) var(--ease),
-    background var(--t-base) var(--ease),
-    box-shadow var(--t-base) var(--ease),
-    border-color var(--t-fast) ease,
-    color var(--t-fast) ease !important;
-}
-
-/* ── Card hover glow ── */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(205, 255, 80, 0.06) 0%,
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity var(--t-base) ease;
-  pointer-events: none;
-  z-index: 2;
-}
-.card:hover::before { opacity: 1; }
-
-/* ── Card spotlight (injected by effects.js) ── */
-.card-spotlight {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 2;
-  background: radial-gradient(
-    400px circle at var(--sx, 50%) var(--sy, 50%),
-    rgba(205, 255, 80, 0.08),
-    transparent 50%
-  );
-  opacity: 0;
-  transition: opacity var(--t-base) ease;
-}
-.card:hover .card-spotlight { opacity: 1; }
-
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -85,5 +40,4 @@ body::after {
     transition-duration: 0.01ms !important;
   }
   body::after { display: none; }
-  .cursor-dot, .cursor-ring { display: none; }
 }

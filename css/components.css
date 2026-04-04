@@ -648,35 +648,6 @@
 }
 
 /* =====================
-   CUSTOM CURSOR
-   ===================== */
-
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  border-radius: 50%;
-  top: 0; left: 0;
-  mix-blend-mode: difference;
-}
-.cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: #fff;
-}
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(255,255,255,0.4);
-  transition: width 0.3s var(--ease), height 0.3s var(--ease);
-}
-.cursor-ring.hover {
-  width: 56px;
-  height: 56px;
-}
-
-/* =====================
    SOCIAL LINK
    ===================== */
 

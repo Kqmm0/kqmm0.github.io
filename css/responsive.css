@@ -5,11 +5,20 @@
 
 /* ── Tablet & below ── */
 @media (max-width: 1024px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
     gap: var(--sp-12);
   }
   .about__visual { order: -1; }
+
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
 
   .service-row {
     grid-template-columns: 50px 1fr;
@@ -66,9 +75,16 @@
   }
   .footer__links { justify-content: center; }
 
-  .contact__links {
+  .contact__links,
+  .contact__actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .contact__actions .btn {
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
   }
 }
 
@@ -99,8 +115,3 @@
   }
 }
 
-/* ── Custom cursor: desktop only ── */
-@media (pointer: coarse), (hover: none) {
-  .cursor-dot,
-  .cursor-ring { display: none !important; }
-}
