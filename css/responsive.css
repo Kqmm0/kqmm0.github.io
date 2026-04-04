@@ -14,6 +14,24 @@
   .about__visual { order: -1; }
   .about__card   { max-width: 460px; width: 100%; }
 
+  /* Showcase: stack to 1 column */
+  .showcase__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+
+  .showcase__visual { order: -1; }
+
+  /* Capabilities: 2-column rows */
+  .cap-row {
+    grid-template-columns: 48px 1fr;
+    gap: var(--sp-4);
+  }
+
+  .cap-row__desc {
+    grid-column: 2;
+  }
+
   /* Services: drop to 2×2 on tablet */
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -64,10 +82,12 @@
   .hero__glow-2 { width: 280px; height: 280px; }
 
   /* Sections */
-  .section     { padding-block: var(--sp-16); }
-  .section--lg { padding-block: var(--sp-20); }
-  .featured    { padding-block: var(--sp-16); }
-  .contact     { padding-block: var(--sp-20); }
+  .section      { padding-block: var(--sp-16); }
+  .section--lg  { padding-block: var(--sp-20); }
+  .featured     { padding-block: var(--sp-16); }
+  .showcase     { padding-block: var(--sp-16); }
+  .contact      { padding-block: var(--sp-20); }
+  .cta-section  { padding-block: var(--sp-20); }
 
   /* Grids */
   .projects-grid { grid-template-columns: 1fr; }
@@ -101,6 +121,44 @@
   .contact__links .social-link {
     width: 100%;
     max-width: 340px;
+    justify-content: center;
+  }
+
+  /* CTA section links */
+  .cta-section__links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-section__links .btn,
+  .cta-section__links .social-link {
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
+  }
+
+  /* Showcase links */
+  .showcase__links {
+    justify-content: center;
+  }
+
+  .showcase__desc {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .showcase__info {
+    align-items: center;
+    text-align: center;
+  }
+
+  .showcase__tags {
+    justify-content: center;
+  }
+
+  .showcase__all .btn {
+    width: 100%;
+    max-width: 280px;
     justify-content: center;
   }
 
@@ -172,6 +230,30 @@
 
   .contact__title {
     font-size: clamp(var(--text-2xl), 7vw, var(--text-3xl));
+  }
+
+  .cta-section__title {
+    font-size: clamp(var(--text-2xl), 7vw, var(--text-3xl));
+  }
+
+  /* Capabilities: fully stacked on mobile */
+  .cap-row {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+    padding-block: var(--sp-6);
+  }
+
+  .cap-row__num {
+    font-size: var(--text-xs);
+  }
+
+  .cap-row__desc {
+    grid-column: 1;
+  }
+
+  .btn--xl {
+    font-size: var(--text-base);
+    padding: 15px 28px;
   }
 }
 
