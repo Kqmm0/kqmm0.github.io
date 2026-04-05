@@ -14,7 +14,6 @@ const PROJECTS = [
     ruDesc: 'Современный сайт для ресторана с онлайн-меню, галереей блюд и формой бронирования.',
     enDesc: 'Modern restaurant website with online menu, food gallery and reservation form.',
     stack: ['HTML', 'CSS', 'JavaScript'],
-    github:     'https://github.com/Kqmm0/kianu-site',
     live:       'https://kqmm0.github.io/kianu-site/',
     detailsUrl: 'projects/kianu.html',
     featured: true,

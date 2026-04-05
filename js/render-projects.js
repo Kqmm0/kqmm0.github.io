@@ -14,7 +14,6 @@ function buildWorkGrid(project, lang = 'ru') {
   const category = CATEGORY_LABELS[project.category]?.[lang] || project.category;
 
   const btnLive    = 'Live demo ↗';
-  const btnGH      = 'GitHub ↗';
   const btnDetails = lang === 'en' ? 'Details ↗' : 'Подробнее ↗';
 
   const stackTags = project.stack
@@ -23,10 +22,6 @@ function buildWorkGrid(project, lang = 'ru') {
 
   const liveLink = project.live && project.live !== '#'
     ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer">${btnLive}</a>`
-    : '';
-
-  const ghLink = project.github && project.github !== '#'
-    ? `<a href="${project.github}" target="_blank" rel="noopener noreferrer">${btnGH}</a>`
     : '';
 
   const detailsLink = project.detailsUrl && project.detailsUrl !== '#'
@@ -50,7 +45,6 @@ function buildWorkGrid(project, lang = 'ru') {
         <p class="work-desc">${desc}</p>
         <div class="work-links">
           ${liveLink}
-          ${ghLink}
           ${detailsLink}
         </div>
       </div>
@@ -71,7 +65,6 @@ function buildCard(project, lang = 'ru') {
   const category = CATEGORY_LABELS[project.category]?.[lang] || project.category;
 
   const btnLive    = 'Live demo';
-  const btnGH      = 'GitHub';
   const btnDetails = lang === 'en' ? 'Details' : 'Подробнее';
 
   const hasImage = project.image;
@@ -92,10 +85,6 @@ function buildCard(project, lang = 'ru') {
     ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">${btnLive}</a>`
     : `<span class="btn btn--ghost btn--sm" style="opacity:0.35;cursor:default">Live soon</span>`;
 
-  const ghBtn = project.github && project.github !== '#'
-    ? `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">${btnGH}</a>`
-    : '';
-
   const detailsBtn = project.detailsUrl && project.detailsUrl !== '#'
     ? `<a href="${project.detailsUrl}" class="btn btn--ghost btn--sm">${btnDetails}</a>`
     : '';
@@ -114,7 +103,6 @@ function buildCard(project, lang = 'ru') {
       </div>
       <div class="card__footer">
         ${liveBtn}
-        ${ghBtn}
         ${detailsBtn}
       </div>
     </article>
