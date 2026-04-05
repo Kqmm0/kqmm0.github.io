@@ -64,7 +64,7 @@ const translations = {
 
     /* --- Footer --- */
     'footer.tagline': 'Современные сайты для реального бизнеса',
-    'footer.copy':    '© 2024 · Сделано с ♥',
+    'footer.copy':    '© 2026 · Сделано с ♥',
 
     /* --- Buttons (project cards) --- */
     'btn.live':    'Live →',
@@ -146,7 +146,7 @@ const translations = {
 
     /* --- Footer --- */
     'footer.tagline': 'Modern websites for real business',
-    'footer.copy':    '© 2024 · Made with ♥',
+    'footer.copy':    '© 2026 · Made with ♥',
 
     /* --- Buttons (project cards) --- */
     'btn.live':    'Live →',
