@@ -1,224 +1,872 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Портфолио веб-разработчика. Создаю лендинги, многостраничные сайты и бизнес-сайты.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Frontend-разработчик — Ставрополь</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ---------- tokens ---------- */
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --ink: #0a0a0a;
+    --ink-2: #1a1a1a;
+    --muted: #6b6b6b;
+    --muted-2: #9a9a9a;
+    --line: #e8e8e8;
+    --line-strong: #111;
+    --accent: #2440ff;
+    --accent-ink: #ffffff;
 
-  <title>Kqmm0 — Веб-разработчик</title>
+    --font-display: "Inter Tight", Inter, system-ui, sans-serif;
+    --font-text: Inter, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23CDFF50'/><text y='.9em' x='50%' text-anchor='middle' font-size='55' fill='%230a0a0a'>K</text></svg>">
+    --content: 1240px;
+    --gutter: clamp(20px, 3vw, 40px);
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+  }
 
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/animations.css">
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-text);
+    color: var(--ink);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: var(--content); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(1.2) blur(10px);
+    -webkit-backdrop-filter: saturate(1.2) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 700; letter-spacing: -0.01em;
+    font-size: 17px;
+  }
+  .brand-mark {
+    width: 26px; height: 26px; display: grid; place-items: center;
+    background: var(--ink); color: #fff;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+    border-radius: 4px;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-2); font-size: 14.5px; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    padding: 9px 16px; border-radius: 999px;
+    background: var(--ink); color: #fff;
+    font-size: 14px; font-weight: 500;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: clamp(60px, 10vw, 140px) 0 clamp(60px, 8vw, 110px);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .hero-meta .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 4px rgba(34,197,94,0.15); }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    font-size: clamp(40px, 7.2vw, 112px);
+    line-height: 0.98;
+    margin: 0 0 28px;
+    max-width: 14ch;
+  }
+  .hero-title em { font-style: normal; color: var(--accent); }
+
+  .hero-sub {
+    font-size: clamp(17px, 1.6vw, 21px);
+    max-width: 58ch;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin: 0 0 40px;
+  }
+
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 500; font-size: 15px;
+    transition: transform .15s, background .2s, color .2s, border-color .2s;
+  }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); background: #fff; }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn svg { width: 16px; height: 16px; }
+
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: clamp(60px, 8vw, 100px);
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 600; letter-spacing: -0.02em;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1;
+  }
+  .stat-label { margin-top: 8px; color: var(--muted); font-size: 13.5px; }
+
+  @media (max-width: 720px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  }
+
+  /* ---------- section ---------- */
+  .section { padding: clamp(70px, 9vw, 130px) 0; border-bottom: 1px solid var(--line); }
+  .section-head {
+    display: grid; grid-template-columns: 180px 1fr; gap: 40px;
+    margin-bottom: 56px; align-items: start;
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 52px);
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    margin: 0;
+    font-weight: 600;
+    max-width: 20ch;
+  }
+  .section-head .kicker { padding-top: 10px; }
+  @media (max-width: 760px) {
+    .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px;
+    align-items: start;
+  }
+  .about-lead {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+    text-wrap: pretty;
+  }
+  .about-body p { color: var(--ink-2); margin: 0 0 16px; font-size: 16px; }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-side { border-left: 1px solid var(--line); padding-left: 32px; }
+  .about-side h4 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 14px; font-weight: 500; }
+  .about-side ul { margin: 0 0 28px; padding: 0; list-style: none; }
+  .about-side li { padding: 10px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 14.5px; }
+  .about-side li:last-child { border-bottom: 1px solid var(--line); }
+  .about-side li span { color: var(--muted); }
+
+  .stack-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px;
+    font-size: 13px; color: var(--ink-2); background: #fff;
+  }
+
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 32px; }
+  }
+
+  /* ---------- CASES ---------- */
+  .cases { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .case {
+    display: grid; grid-template-columns: 90px 1.3fr 1fr 200px;
+    gap: 32px; align-items: center;
+    padding: 28px 12px 28px;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer; position: relative;
+    transition: background .25s, padding .25s;
+  }
+  .case:hover { background: var(--bg-soft); padding-left: 22px; }
+  .case-num { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted-2); }
+  .case-info h3 {
+    font-family: var(--font-display); font-weight: 600; letter-spacing: -0.015em;
+    font-size: clamp(20px, 2.1vw, 28px); margin: 0 0 6px;
+  }
+  .case-info p { color: var(--muted); margin: 0; font-size: 14.5px; }
+  .case-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .case-tags .chip { font-size: 12.5px; padding: 4px 10px; }
+  .case-preview {
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--line); border-radius: var(--r-md);
+    overflow: hidden; background: var(--bg-soft);
+    position: relative;
+  }
+  .case-preview .ph {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted-2);
+  }
+  .case-arrow {
+    position: absolute; top: 28px; right: 14px;
+    width: 28px; height: 28px; border-radius: 999px;
+    display: grid; place-items: center; color: var(--ink);
+    transition: transform .25s, background .2s, color .2s;
+  }
+  .case:hover .case-arrow { transform: rotate(-45deg); background: var(--ink); color: #fff; }
+
+  @media (max-width: 900px) {
+    .case { grid-template-columns: 60px 1fr; }
+    .case-tags, .case-preview { display: none; }
+    .case-arrow { top: 32px; right: 12px; }
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .step {
+    padding: 32px 28px 40px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    min-height: 240px;
+    display: flex; flex-direction: column;
+  }
+  .step-num { font-family: var(--font-mono); font-size: 12px; color: var(--muted-2); }
+  .step-title {
+    font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.015em;
+    margin: 40px 0 10px;
+  }
+  .step-desc { color: var(--muted); font-size: 14.5px; margin: 0; flex: 1; }
+  .step-time {
+    margin-top: 16px; font-family: var(--font-mono); font-size: 11.5px;
+    color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  @media (max-width: 860px) {
+    .process { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .process { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .review {
+    border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 32px; background: #fff;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .review blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 20px; line-height: 1.4; letter-spacing: -0.01em;
+    text-wrap: pretty;
+    color: var(--ink);
+    flex: 1;
+  }
+  .review-who { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 600; font-size: 14px;
+  }
+  .review-name { font-weight: 500; font-size: 14.5px; }
+  .review-role { color: var(--muted); font-size: 13px; }
+  @media (max-width: 760px) { .reviews { grid-template-columns: 1fr; } }
+
+  /* ---------- FAQ ---------- */
+  .faq { border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    width: 100%; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    padding: 24px 4px;
+    font-family: var(--font-display); font-size: clamp(17px, 1.7vw, 20px);
+    font-weight: 500; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .faq-q .plus {
+    width: 22px; height: 22px; flex: 0 0 22px; position: relative;
+    transition: transform .25s;
+  }
+  .faq-q .plus::before, .faq-q .plus::after {
+    content: ""; position: absolute; background: var(--ink);
+    left: 50%; top: 50%; transform: translate(-50%, -50%);
+  }
+  .faq-q .plus::before { width: 14px; height: 1.5px; }
+  .faq-q .plus::after { width: 1.5px; height: 14px; transition: transform .25s; }
+  .faq-item.open .faq-q .plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .faq-a-inner { padding: 0 4px 24px; color: var(--muted); font-size: 15px; max-width: 70ch; }
+  .faq-item.open .faq-a { max-height: 400px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    padding: clamp(70px, 9vw, 130px) 0;
+    background: var(--ink); color: #fff;
+  }
+  .contact .mono { color: #9a9a9a; }
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .contact h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 72px);
+    letter-spacing: -0.03em; line-height: 1.02;
+    margin: 16px 0 28px; font-weight: 600;
+    text-wrap: pretty;
+  }
+  .contact p { color: #bfbfbf; font-size: 17px; max-width: 44ch; margin: 0 0 32px; }
+
+  .contact-list { display: grid; gap: 2px; }
+  .contact-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 15.5px;
+    transition: padding .2s;
+  }
+  .contact-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .contact-item:hover { padding-left: 10px; }
+  .contact-item .label { color: #9a9a9a; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-item .val { font-weight: 500; }
+
+  .form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-lg);
+    padding: 28px;
+  }
+  .form h3 { font-family: var(--font-display); font-size: 20px; margin: 0 0 6px; font-weight: 600; }
+  .form p.small { color: #9a9a9a; font-size: 13.5px; margin: 0 0 22px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12.5px; color: #9a9a9a; margin-bottom: 6px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; }
+  .field input, .field textarea {
+    width: 100%; padding: 12px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px; color: #fff; font: inherit;
+    transition: border-color .2s, background .2s;
+  }
+  .field textarea { min-height: 96px; resize: vertical; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: #fff; background: rgba(255,255,255,0.1); }
+  .field input::placeholder, .field textarea::placeholder { color: #707070; }
+  .form .btn-primary {
+    background: #fff; color: var(--ink); width: 100%; justify-content: center;
+    padding: 14px;
+  }
+  .form .btn-primary:hover { background: var(--accent); color: #fff; }
+
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    background: var(--ink); color: #9a9a9a;
+    font-size: 13px;
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+  /* scroll-reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
 </head>
 <body>
 
-  <!-- Scroll progress -->
-  <div class="scroll-progress" aria-hidden="true"></div>
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">K</span>
+      <span>kqmm0<span style="color: var(--muted);">.dev</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Обо&nbsp;мне</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#process">Процесс</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="nav-cta">Обсудить проект</a>
+  </div>
+</nav>
 
-  <!-- HEADER -->
-  <header class="header" role="banner">
-    <div class="header__inner">
-      <a href="index.html" class="logo" aria-label="На главную">
-        <span class="logo__dot"></span>
-        <span>Kqmm0</span>
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span class="dot"></span>
+      <span>Ставрополь · Свободен для заказов</span>
+    </div>
+    <h1 class="hero-title">
+      Делаю сайты, <em>которые продают</em> — без лишнего.
+    </h1>
+    <p class="hero-sub">
+      Frontend-разработчик из Ставрополя. Превращаю идеи и макеты в быстрые, чистые сайты:
+      лендинги, корпоративные страницы, интернет-магазины. Работаю с местным бизнесом и клиентами по всей России.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">
+        Заказать сайт
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#cases" class="btn btn-ghost">Посмотреть работы</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Проектов в&nbsp;портфолио</div>
+      </div>
+      <div>
+        <div class="stat-num">3&nbsp;года</div>
+        <div class="stat-label">Коммерческой разработки</div>
+      </div>
+      <div>
+        <div class="stat-num">98</div>
+        <div class="stat-label">PageSpeed в&nbsp;среднем</div>
+      </div>
+      <div>
+        <div class="stat-num">от&nbsp;5&nbsp;дней</div>
+        <div class="stat-label">Срок запуска лендинга</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker mono">01 / Обо мне</div>
+      <h2>Один разработчик — полный цикл от макета до продакшена.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-body">
+        <p class="about-lead">
+          Привет! Меня зовут [Имя], я frontend-разработчик из Ставрополя. Занимаюсь сайтами
+          уже больше трёх лет — от лендингов для местных кафе до корпоративных сайтов и каталогов.
+        </p>
+        <p>
+          Работаю сам: обсуждаем задачу, предлагаю решение, показываю макет, делаю, выкладываю.
+          Без менеджеров-посредников и бесконечных согласований. Это значит быстрее, дешевле
+          и понятнее — вы всегда общаетесь с тем, кто реально пишет код.
+        </p>
+        <p>
+          Специализируюсь на скорости и чистоте. Сайт не должен тормозить на мобильном,
+          а код должен быть таким, чтобы его мог подхватить любой другой разработчик
+          через полгода.
+        </p>
+      </div>
+      <aside class="about-side">
+        <h4>Факты</h4>
+        <ul>
+          <li><span>Город</span><span>Ставрополь</span></li>
+          <li><span>Опыт</span><span>3+ года</span></li>
+          <li><span>Формат</span><span>Удалённо / встречи</span></li>
+          <li><span>Занятость</span><span>Открыт к заказам</span></li>
+        </ul>
+
+        <h4>Стек</h4>
+        <div class="stack-chips">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">React</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">Tailwind</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">WordPress</span>
+          <span class="chip">Figma → Code</span>
+          <span class="chip">SEO-оптимизация</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker mono">02 / Кейсы</div>
+      <h2>Избранные работы последних лет.</h2>
+    </div>
+
+    <div class="cases">
+      <a class="case" href="#contact">
+        <div class="case-num">01</div>
+        <div class="case-info">
+          <h3>Лендинг для кофейни «Север»</h3>
+          <p>Меню, бронь стола, карта — одностраничник с быстрой загрузкой.</p>
+        </div>
+        <div class="case-tags">
+          <span class="chip">React</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">Tailwind</span>
+        </div>
+        <div class="case-preview">
+          <div class="ph">preview · cafe-sever</div>
+        </div>
+        <div class="case-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
       </a>
 
-      <nav class="nav" role="navigation" aria-label="Основная навигация">
-        <ul class="nav__links">
-          <li><a href="#work" class="nav__link" data-i18n="nav.projects">Проекты</a></li>
-          <li><a href="#about" class="nav__link" data-i18n="nav.about">Обо мне</a></li>
-          <li><a href="#contact" class="nav__link" data-i18n="nav.contact">Контакт</a></li>
-        </ul>
-      </nav>
-
-      <div class="header__actions">
-        <div class="lang-switcher" role="group" aria-label="Язык / Language">
-          <button class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
-          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      <a class="case" href="#contact">
+        <div class="case-num">02</div>
+        <div class="case-info">
+          <h3>Каталог мебельной мастерской</h3>
+          <p>Каталог на 120 позиций, фильтры, калькулятор стоимости, админка.</p>
         </div>
-        <button class="burger" aria-label="Открыть меню" aria-expanded="false">
-          <span class="burger__line"></span>
-          <span class="burger__line"></span>
-          <span class="burger__line"></span>
+        <div class="case-tags">
+          <span class="chip">Next.js</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">Strapi CMS</span>
+        </div>
+        <div class="case-preview"><div class="ph">preview · mebel-stv</div></div>
+        <div class="case-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+      </a>
+
+      <a class="case" href="#contact">
+        <div class="case-num">03</div>
+        <div class="case-info">
+          <h3>Сайт юридической компании</h3>
+          <p>Корпоративный сайт, блог, форма заявки с интеграцией в CRM.</p>
+        </div>
+        <div class="case-tags">
+          <span class="chip">WordPress</span>
+          <span class="chip">Custom theme</span>
+          <span class="chip">Bitrix24</span>
+        </div>
+        <div class="case-preview"><div class="ph">preview · pravo26</div></div>
+        <div class="case-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+      </a>
+
+      <a class="case" href="#contact">
+        <div class="case-num">04</div>
+        <div class="case-info">
+          <h3>Лендинг для автосервиса</h3>
+          <p>Короткий лендинг с онлайн-записью и подсчётом стоимости работ.</p>
+        </div>
+        <div class="case-tags">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JS</span>
+          <span class="chip">Яндекс.Карты</span>
+        </div>
+        <div class="case-preview"><div class="ph">preview · autoservice</div></div>
+        <div class="case-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+      </a>
+
+      <a class="case" href="#contact">
+        <div class="case-num">05</div>
+        <div class="case-info">
+          <h3>Магазин крафтового шоколада</h3>
+          <p>Небольшой интернет-магазин на 40 SKU, оплата, доставка по городу.</p>
+        </div>
+        <div class="case-tags">
+          <span class="chip">Tilda + JS</span>
+          <span class="chip">ЮKassa</span>
+        </div>
+        <div class="case-preview"><div class="ph">preview · cacao-shop</div></div>
+        <div class="case-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+      </a>
+
+      <a class="case" href="#contact">
+        <div class="case-num">06</div>
+        <div class="case-info">
+          <h3>Сайт-визитка стоматологии</h3>
+          <p>Визитка, команда, услуги, онлайн-запись, отзывы — чисто, быстро.</p>
+        </div>
+        <div class="case-tags">
+          <span class="chip">React</span>
+          <span class="chip">Vite</span>
+          <span class="chip">Netlify</span>
+        </div>
+        <div class="case-preview"><div class="ph">preview · dent-stv</div></div>
+        <div class="case-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top: 48px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <p style="margin: 0; color: var(--muted); font-size: 14.5px;">Показаны 6 из 40+ проектов. Полное портфолио пришлю в Telegram.</p>
+      <a href="#contact" class="btn btn-ghost">
+        Запросить полное портфолио
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker mono">03 / Процесс</div>
+      <h2>Как мы будем работать — от первого сообщения до запуска.</h2>
+    </div>
+
+    <div class="process">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Обсуждаем</div>
+        <p class="step-desc">Созвон или переписка. Разбираемся, какая задача, какая аудитория, что должен делать сайт.</p>
+        <div class="step-time">1–2 дня</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Оцениваю</div>
+        <p class="step-desc">Присылаю смету с фиксированной ценой и сроком. Без «потом посчитаем» — всё понятно заранее.</p>
+        <div class="step-time">1 день</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Делаю</div>
+        <p class="step-desc">Макет → вёрстка → код. Раз в 2–3 дня показываю промежуточный результат в Telegram.</p>
+        <div class="step-time">5–20 дней</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Запускаем</div>
+        <p class="step-desc">Выкладываю на хостинг, настраиваю домен, метрики, SEO. Месяц бесплатной поддержки в подарок.</p>
+        <div class="step-time">1 день</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker mono">04 / Отзывы</div>
+      <h2>Что говорят клиенты, с которыми мы работали.</h2>
+    </div>
+
+    <div class="reviews">
+      <div class="review">
+        <blockquote>«Сделал сайт кафе за неделю. Заявки пошли на вторые сутки после запуска. Отдельное спасибо, что не надо было объяснять очевидные вещи — сам предложил решения.»</blockquote>
+        <div class="review-who">
+          <div class="avatar">АМ</div>
+          <div>
+            <div class="review-name">Алексей М.</div>
+            <div class="review-role">Кофейня «Север» · Ставрополь</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <blockquote>«Заказывали каталог с калькулятором. Получили больше, чем ждали: админку переделали под себя за вечер, менеджеры разобрались без инструкции.»</blockquote>
+        <div class="review-who">
+          <div class="avatar">ЕК</div>
+          <div>
+            <div class="review-name">Елена К.</div>
+            <div class="review-role">Мебельная мастерская</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <blockquote>«Понравилась прозрачность: каждые пару дней приходит ссылка с прогрессом, видно, что сделано. Ни одного пропущенного срока.»</blockquote>
+        <div class="review-who">
+          <div class="avatar">ДВ</div>
+          <div>
+            <div class="review-name">Дмитрий В.</div>
+            <div class="review-role">Юридическая компания</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <blockquote>«Нужен был сайт быстро, бюджет ограничен. Сделал честно: показал, что реально успеем уложить в бюджет, а что — нет. В итоге запустились в срок.»</blockquote>
+        <div class="review-who">
+          <div class="avatar">МС</div>
+          <div>
+            <div class="review-name">Мария С.</div>
+            <div class="review-role">Стоматологическая клиника</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker mono">05 / FAQ</div>
+      <h2>Частые вопросы от заказчиков.</h2>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q">Сколько стоит сайт?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Лендинг — от 25&nbsp;000&nbsp;₽, многостраничный сайт — от 60&nbsp;000&nbsp;₽, интернет-магазин — от 120&nbsp;000&nbsp;₽.
+          Точную цифру называю после 15-минутного созвона: зависит от объёма, сроков и интеграций.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">За сколько делаете лендинг?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Простой лендинг — 5–7 дней, с нестандартным дизайном и анимациями — 10–14. Срок всегда фиксируется в договоре.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Работаете по договору?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Да. Самозанятый, выдаю чек. Для юрлиц — договор с ТЗ, актом и двумя этапами оплаты (50/50).
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">У меня нет макета — вы рисуете дизайн?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Да, делаю дизайн в Figma. Не претендую на звание арт-директора, но чистый и понятный UX — гарантирую.
+          На сложные проекты могу привлечь знакомого дизайнера.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что с поддержкой после запуска?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Месяц поддержки включён в стоимость: правки текстов, мелкие баги, помощь с наполнением. Дальше — либо по часам, либо помесячный тариф.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Работаете только по Ставрополю?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Нет, принимаю заказы по всей России и СНГ — 80% коммуникации и так идёт через Telegram и Zoom. Местным могу встретиться очно.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="mono">06 / Контакты</div>
+    <div class="contact-grid" style="margin-top: 24px;">
+      <div>
+        <h2>Расскажите о задаче — отвечу в течение часа.</h2>
+        <p>Лучший способ — Telegram. Можно просто написать «привет, нужен сайт для X» — дальше разберёмся вместе.</p>
+
+        <div class="contact-list">
+          <a class="contact-item" href="https://t.me/kqmm0">
+            <span class="label">Telegram</span>
+            <span class="val">@kqmm0&nbsp;↗</span>
+          </a>
+          <a class="contact-item" href="https://wa.me/79999999999">
+            <span class="label">WhatsApp</span>
+            <span class="val">+7&nbsp;(999)&nbsp;999-99-99&nbsp;↗</span>
+          </a>
+          <a class="contact-item" href="mailto:hello@kqmm0.dev">
+            <span class="label">Email</span>
+            <span class="val">hello@kqmm0.dev&nbsp;↗</span>
+          </a>
+          <a class="contact-item" href="https://github.com/Kqmm0">
+            <span class="label">GitHub</span>
+            <span class="val">github.com/Kqmm0&nbsp;↗</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="form" onsubmit="event.preventDefault(); alert('Спасибо! Я свяжусь с вами в течение часа.'); this.reset();">
+        <h3>Быстрая заявка</h3>
+        <p class="small">Заполните 3 поля — напишу сам.</p>
+        <div class="field">
+          <label for="f-name">Как к вам обращаться</label>
+          <input id="f-name" required placeholder="Имя" />
+        </div>
+        <div class="field">
+          <label for="f-contact">Telegram или телефон</label>
+          <input id="f-contact" required placeholder="@username или +7…" />
+        </div>
+        <div class="field">
+          <label for="f-task">Задача</label>
+          <textarea id="f-task" required placeholder="Коротко: что нужно сделать, к какому сроку, примерный бюджет"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Отправить заявку
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-      </div>
+      </form>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- MOBILE NAV -->
-  <nav class="mobile-nav" aria-label="Мобильная навигация" aria-hidden="true">
-    <a href="#work" class="mobile-nav__link" data-i18n="nav.projects">Проекты</a>
-    <a href="#about" class="mobile-nav__link" data-i18n="nav.about">Обо мне</a>
-    <a href="#contact" class="mobile-nav__link" data-i18n="nav.contact">Контакт</a>
-  </nav>
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 kqmm0.dev · Ставрополь</div>
+    <div>Собрано вручную на HTML/CSS/JS</div>
+  </div>
+</footer>
 
+<script>
+  document.querySelectorAll('.faq-item .faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.closest('.faq-item').classList.toggle('open');
+    });
+  });
 
-  <main>
-
-    <!-- ══════════════════════════════════════
-         HERO — centered, typography-driven
-         ══════════════════════════════════════ -->
-    <section class="hero">
-      <div class="container hero__inner">
-        <h1 class="hero__title" data-i18n="hero.title">
-          Создаю сайты,<br>которые <em>работают</em><br>на ваш бизнес
-        </h1>
-        <p class="hero__sub" data-i18n="hero.sub">
-          Лендинги, многостраничные сайты и бизнес-страницы для ресторанов, кафе и компаний.
-        </p>
-        <a href="https://t.me/Wrotich" target="_blank" rel="noopener"
-           class="btn btn--primary btn--lg" data-i18n="hero.cta.tg">
-          Написать в Telegram
-        </a>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         ABOUT — large statement + bio
-         ══════════════════════════════════════ -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about__inner">
-          <div class="about__statement reveal">
-            <p class="about__big" data-i18n="about.p1">
-              Изучаю веб-разработку самостоятельно: HTML, CSS и JavaScript. Строю сайты с нуля — без фреймворков, без лишнего кода.
-            </p>
-          </div>
-          <div class="about__meta reveal reveal-delay-1">
-            <p class="about__text" data-i18n="about.p2">
-              Специализируюсь на тёмном минималистичном дизайне для реального бизнеса. Каждый проект — это готовый продукт.
-            </p>
-            <div class="about__details">
-              <div class="about__detail">
-                <span class="about__detail-label" data-i18n="about.stat.stack">Стек</span>
-                <span class="about__detail-value" data-i18n="about.stat.stack.v">HTML · CSS · JS</span>
-              </div>
-              <div class="about__detail">
-                <span class="about__detail-label" data-i18n="about.stat.focus">Фокус</span>
-                <span class="about__detail-value" data-i18n="about.stat.focus.v">Бизнес-сайты</span>
-              </div>
-              <div class="about__detail">
-                <span class="about__detail-label" data-i18n="about.stat.status">Статус</span>
-                <span class="about__detail-value about__detail-value--green" data-i18n="about.stat.status.v">Открыт к работе</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         WORK — numbered project list
-         ══════════════════════════════════════ -->
-    <section class="work" id="work">
-      <div class="container">
-        <h2 class="work__heading reveal" data-i18n="featured.title">Избранные проекты</h2>
-
-        <div class="work__list" data-projects-grid="featured" aria-live="polite">
-          <!-- JS renders project entries here -->
-        </div>
-
-        <a href="projects.html" class="work__all reveal" data-i18n="featured.all">Все проекты →</a>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         SERVICES — minimal 2-col text
-         ══════════════════════════════════════ -->
-    <section class="services" id="services">
-      <div class="container">
-        <h2 class="services__heading reveal" data-i18n="services.title">Что я создаю</h2>
-
-        <div class="services__grid">
-          <div class="services__item reveal">
-            <span class="services__num">01</span>
-            <h3 data-i18n="service.landing.title">Лендинг-страницы</h3>
-            <p data-i18n="service.landing.desc">Продающие одностраничники с сильным дизайном и CTA.</p>
-          </div>
-          <div class="services__item reveal reveal-delay-1">
-            <span class="services__num">02</span>
-            <h3 data-i18n="service.business.title">Бизнес-сайты</h3>
-            <p data-i18n="service.business.desc">Профессиональные сайты для компаний и брендов.</p>
-          </div>
-          <div class="services__item reveal reveal-delay-2">
-            <span class="services__num">03</span>
-            <h3 data-i18n="service.restaurant.title">Сайты для ресторанов</h3>
-            <p data-i18n="service.restaurant.desc">Меню, атмосфера и бронирование — всё в одном.</p>
-          </div>
-          <div class="services__item reveal reveal-delay-3">
-            <span class="services__num">04</span>
-            <h3 data-i18n="service.multipage.title">Многостраничные сайты</h3>
-            <p data-i18n="service.multipage.desc">Полноценный сайт с навигацией и несколькими разделами.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         CONTACT — big CTA
-         ══════════════════════════════════════ -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact__inner reveal">
-          <h2 class="contact__title" data-i18n="contact.title">
-            Готов к новым<br>проектам
-          </h2>
-          <p class="contact__sub" data-i18n="contact.sub">
-            Напишите мне в Telegram — отвечу быстро, обсудим ваш проект.
-          </p>
-          <div class="contact__actions">
-            <a href="https://t.me/Wrotich" target="_blank" rel="noopener"
-               class="btn btn--primary btn--lg" data-i18n="contact.tg">
-              Написать в Telegram
-            </a>
-            <a href="https://github.com/Kqmm0" target="_blank" rel="noopener"
-               class="btn btn--ghost btn--lg" data-i18n="contact.gh">
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__inner">
-        <span class="footer__copy reveal" data-i18n="footer.copy">© 2026</span>
-        <span class="footer__copy reveal reveal-delay-1" data-i18n="footer.tagline">Современные сайты для реального бизнеса</span>
-        <div class="footer__links reveal reveal-delay-2">
-          <a href="https://t.me/Wrotich" target="_blank" rel="noopener" class="footer__link" style="color:var(--accent)">Telegram</a>
-          <a href="https://github.com/Kqmm0" target="_blank" rel="noopener" class="footer__link">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <button class="scroll-top" aria-label="Вернуться наверх">↑</button>
-
-  <script src="data/projects-data.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/render-projects.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/transitions.js"></script>
-  <script src="js/effects.js"></script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.hero-title, .hero-sub, .hero-ctas, .hero-stats, .section-head, .case, .step, .review, .faq-item, .contact-grid').forEach(el => {
+    el.classList.add('reveal'); observer.observe(el);
+  });
+</script>
 
 </body>
 </html>
